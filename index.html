@@ -56,6 +56,16 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:6px 0 
 .pom{font:800 clamp(52px,16vw,88px) Fraunces,serif;text-align:center;font-variant-numeric:tabular-nums}
 #boost{font:italic 500 22px/1.4 Fraunces,serif;min-height:68px;text-align:center;margin-top:12px;color:var(--ro)}
 footer{text-align:center;color:var(--mu);padding:50px 0 34px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 0;position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:linear-gradient(var(--bg) 70%,transparent);scrollbar-width:none}
+.tabs button{flex:none;background:var(--card);border:1px solid var(--bd);color:var(--tx);border-radius:99px;padding:9px 16px;font:700 14px Manrope,sans-serif;cursor:pointer;transition:all .25s}
+.tabs button.on{background:linear-gradient(120deg,var(--em),var(--cr));border-color:transparent;color:#fff}
+.pg{display:none}.pg.on{display:block;animation:up .6s both}
+.tr{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--bd)}.tr:last-child{border:0}.tr b{min-width:108px;color:var(--gd);font-size:14px}
+.dc{border-left:5px solid var(--em)}.dc.mock{border-left-color:var(--cr);background:rgba(225,29,72,.1)}.dc.sun{border-left-color:var(--gd)}.dc.today{box-shadow:0 0 0 2px var(--gd)}
+.dc label{display:flex;gap:12px;cursor:pointer}.dc input{width:22px;height:22px;flex:none;margin-top:3px;accent-color:#ffb347}
+.dc.dn .tt{text-decoration:line-through;opacity:.55}.dd{font-size:12px;color:var(--mu);letter-spacing:.08em;text-transform:uppercase}.tt{font:800 20px Fraunces,serif}
+.dc ul,.ml{margin:6px 0 0;padding-left:20px}.dc li,.ml li{margin:3px 0}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border-bottom:1px solid var(--bd);padding:8px 6px;text-align:left;vertical-align:top}th{color:var(--gd)}.sc{overflow-x:auto}
 </style></head><body>
 <canvas id="bg"></canvas><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grain"></div>
 
@@ -64,15 +74,16 @@ footer{text-align:center;color:var(--mu);padding:50px 0 34px}
 
 <div id="app" class="z">
 <nav><span>Sai Charan · CLAT 2027</span><button class="btn s" onclick="sessionStorage.clear();location.reload()">Logout</button></nav>
-<section class="hero"><small id="hi">Welcome back</small><h1>Sai Charan</h1><div id="ty"></div>
+<div class="tabs"><button class="on" data-p="home" onclick="sp('home')">🏠 Home</button><button data-p="time" onclick="sp('time')">⏰ Timetable</button><button data-p="plan" onclick="sp('plan')">📅 20-Day Plan</button><button data-p="fix" onclick="sp('fix')">🔍 Error Fix</button><button data-p="more" onclick="sp('more')">🔥 Discipline &amp; Tools</button></div>
+<div class="pg on" id="p-home"><section class="hero"><small id="hi">Welcome back</small><h1>Sai Charan</h1><div id="ty"></div>
 <div class="cd"><div><b id="cdd">0</b><span>Days</span></div><div><b id="cdh">0</b><span>Hours</span></div><div><b id="cdm">0</b><span>Min</span></div><div><b id="cds">0</b><span>Sec</span></div></div></section>
 
 <section class="sec rv"><h2>Today’s mission</h2><p id="dl"></p></section>
-<div class="card rv"><div class="mission" id="ms"></div></div>
+<div class="card rv"><div class="mission" id="mt0"></div><ul class="ml" id="mt"></ul><p style="color:var(--mu);font-size:14px;margin-top:10px">Full routine: ⏰ Timetable tab. Full 20 rojula plan: 📅 20-Day Plan tab.</p></div>
 <div class="g rv" style="margin-top:12px"><div class="card"><h3>Daily checklist</h3><div id="tl"></div></div>
 <div class="card"><h3>Progress</h3><div class="row"><div class="ring"><svg width="120" height="120"><defs><linearGradient id="gg"><stop offset="0" stop-color="#e11d48"/><stop offset="1" stop-color="#ffb347"/></linearGradient></defs><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="10"/><circle id="rg" cx="60" cy="60" r="50" fill="none" stroke="url(#gg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" style="transition:stroke-dashoffset 1s"/></svg><b id="rp">0%</b></div><div><div class="st" id="sk">0</div><div style="color:var(--mu)">day streak 🔥</div></div></div><p style="color:var(--mu)" id="pt"></p></div></div>
 
-<section class="sec rv"><h2>Discipline code</h2><p>Motivation fade avtundi. Discipline nee ni nadipistundi.</p></section>
+</div><div class="pg" id="p-time"></div><div class="pg" id="p-plan"></div><div class="pg" id="p-fix"><section class="sec"><h2>Nee mock errors → fix map</h2><p>Mock 1 lo nee 15 wrongs and skips ki fix.</p></section><div class="card sc"><table><tr><th>Error</th><th>Qs</th><th>Fix</th></tr><tr><td>Quant 0 attempted</td><td>111–120</td><td>Roju 10–15 Qs: %, ratio, average, DI tables</td></tr><tr><td>Contract law</td><td>66, 67, 69</td><td>Invitation vs offer, counter-offer, prescribed mode</td></tr><tr><td>Writs and mandamus</td><td>59, 60</td><td>Public vs private duty, "incorrect" Qs</td></tr><tr><td>Private defence</td><td>83, 84</td><td>Proportionate, preventive not punitive</td></tr><tr><td>Strengthen / weaken</td><td>89, 98</td><td>Weaken = break the link, strengthen = support it</td></tr><tr><td>Direction words missed</td><td>4, 60</td><td>Underline least / incorrect / must</td></tr><tr><td>Opposite option picked</td><td>19, 20, 55, 91</td><td>Option passage ki contradict aite cut</td></tr><tr><td>CA skipped</td><td>29–35</td><td>Space/ISRO, Presidents, elections</td></tr></table></div><div class="card" style="margin-top:12px"><b>Golden rules:</b> 1) Direction words underline. 2) 2 options eliminate aite guess, clueless aite skip. 3) Mock tarvata analysis skip cheyyaku. 4) Dec 3 nundi new topics vaddu.</div></div><div class="pg" id="p-more"><section class="sec rv"><h2>Discipline code</h2><p>Motivation fade avtundi. Discipline nee ni nadipistundi.</p></section>
 <div class="g rv">
 <div class="card"><h3>1. Show up</h3>Mood ela unna, roju plan open chey. Chinna steps kuda count avtayi.</div>
 <div class="card"><h3>2. Phone away</h3>Study block lo phone dooram. Focus ante nee future ki gift.</div>
@@ -89,7 +100,7 @@ footer{text-align:center;color:var(--mu);padding:50px 0 34px}
 
 <section class="sec rv"><h2>Feeling low?</h2><p>Okka click chey.</p></section>
 <div class="card rv" style="text-align:center"><button class="btn" onclick="bo()" style="max-width:300px">I need a push 💥</button><div id="boost"></div></div>
-<footer>Made for Sai Charan. Ee 20 rojulu nee. Dec 5 na kalustham 🏆</footer></div>
+</div><footer>Made for Sai Charan. Ee 20 rojulu nee. Dec 5 na kalustham 🏆</footer></div>
 
 <script>
 var H="d3b72b2ffc63135a3ec3d4426c4457df5e6deb900e568f6345b63f4e5aac8d05",EX=new Date(2026,11,5,14,0),START=new Date(2026,10,16);
@@ -118,9 +129,40 @@ function clrM(){S("mocks",[]);bars()}
 var pt,pr=0;function pS(m){pX();pr=m*60;pt=setInterval(function(){pr--;G("pm").textContent=("0"+Math.floor(pr/60)).slice(-2)+":"+("0"+pr%60).slice(-2);if(pr<=0){pX();G("pm").textContent="Done! 🎉"}},1000)}
 function pX(){clearInterval(pt)}
 function bo(){var e=G("boost");e.style.opacity=0;setTimeout(function(){e.textContent=BO[Math.floor(Math.random()*BO.length)];e.style.transition="opacity .6s";e.style.opacity=1},200)}
-function init(){G("dl").textContent="Day "+(dayN+1)+" of 20 · "+new Date().toDateString();G("ms").textContent=F[dayN];ty();cd();setInterval(cd,1000);draw();bars();
+function init(){G("dl").textContent="Day "+(dayN+1)+" of 20 · "+new Date().toDateString();mis();rend();if(location.hash.length>1&&G("p-"+location.hash.slice(1)))sp(location.hash.slice(1));ty();cd();setInterval(cd,1000);draw();bars();
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in")})},{threshold:.12});document.querySelectorAll(".rv").forEach(function(e){io.observe(e)})}
 var cv=G("bg"),cx=cv.getContext("2d"),P=[];function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();addEventListener("resize",rs);
 for(var i=0;i<46;i++)P.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2+.6,v:Math.random()*.6+.2,a:Math.random()*6});
 (function f(){cx.clearRect(0,0,cv.width,cv.height);P.forEach(function(p){p.y-=p.v;p.a+=.02;p.x+=Math.sin(p.a)*.4;if(p.y<-5){p.y=cv.height+5;p.x=Math.random()*cv.width}cx.beginPath();cx.fillStyle="rgba(255,"+(120+p.r*30)+",60,"+(.25+Math.sin(p.a)*.2)+")";cx.arc(p.x,p.y,p.r,0,7);cx.fill()});requestAnimationFrame(f)})();
+
+var WK=[["5:30–5:45","Wake, water"],["5:45–6:45","Quant (10–15 Qs, timed)"],["6:45–7:45","Legal Reasoning (2 passages)"],["7:45–8:15","Breakfast, leave"],["College breaks","15 min CA flashcards / vocab"],["6:00–6:45 pm","Snack, rest"],["6:45–7:45","Logical / English (alternate)"],["7:45–8:15","Dinner"],["8:15–9:15","Current Affairs / Static GK"],["9:15–9:45","Error log revision"],["10:00","Sleep"]],
+SN=[["7:00","Wake, breakfast"],["8:00–10:00","Legal + Logical"],["10:15–12:00","Quant"],["12:00–1:30","Lunch, rest"],["2:00–4:00","Mock / timed sectional"],["4:15–6:00","Analysis + English"],["6:30–8:00","Current Affairs"],["8:30–9:30","Error log + plan"],["10:00","Sleep"]],
+PL=[["Foundation","",["AM Quant: percentages, ratios","AM Legal: contract, invitation vs offer, counter-offer (fix Q66, 67, 69)","PM Logical: strengthen / weaken (fix Q89, 98)","Night CA: ISRO and space (Q26–30)","Write your 15-wrong error log"]],
+["Build","",["AM Quant: averages, profit and loss","AM Legal: writs, mandamus (fix Q59, 60)","PM English: 1 passage, ‘least likely’ and tone Qs (Q4)","Night CA: Presidents, VP, elections (Q31–35)"]],
+["Build","",["AM Quant: data tables (DI)","AM Legal: private defence (fix Q83, 84) + negligence","PM Logical: assumption and inference (Q19, 20)","Night CA: Constitution, Fundamental Duties (Q55)"]],
+["Pre-mock","",["AM Quant: 15 mixed Qs, timed","AM Legal: 2 mixed passages, timed","PM Logical 1 passage + English 1 passage","Night CA: Jan–Jun 2026 news","Sleep by 10 pm"]],
+["MOCK 2 (evening)","mock",["AM: 30 min formula revision only","6:45–8:45 pm: full mock, exam conditions","No analysis tonight, sleep early"]],
+["Mock 2 analysis","",["AM: tag wrongs (concept / careless / misread / time)","PM: section-wise score and time spent","Pick your top 3 weak topics"]],
+["Sunday: fix day","sun",["8–10 Legal + Logical weak topics","10:15–12 Quant weak types","2–3:30 pm sectional timed (English + Logical)","6:30–8 CA: Jul–Nov 2026 news","8:30 pm error log update"]],
+["Fix","",["AM Quant: weak type, 15 Qs","AM Legal: fact–principle matching","PM Logical: strengthen / weaken, 10 Qs","Night CA: 20 MCQs"]],
+["Pre-mock","",["AM Quant: 10 Qs in 10 min","AM Legal: mixed passage","PM English passage","Night CA revise, sleep early"]],
+["MOCK 3 (evening)","mock",["AM: light formula revision","6:45–8:45 pm: full mock","Try your planned section order"]],
+["Mock 3 analysis","",["AM: tag every wrong Q","PM: compare Mock 2 vs Mock 3 by section","Night: fix top 3 weak topics"]],
+["Strengthen","",["AM Quant speed drill","AM Legal: constitutional law, IPC basics","PM Logical mixed 10 Qs","Night CA month-wise notes"]],
+["Light + sectional","",["AM Quant 10 Qs","PM English + CA timed (50 min)","Early sleep, big day tomorrow"]],
+["Sunday: MOCK 4","mock",["8–10 light revision of error log","2:00–4:00 pm: Mock 4, exam time","4:30–8 pm detailed analysis","Night error log update"]],
+["Fix","",["AM Quant formulas + 10 Qs","AM Legal principles recap","PM Logical mixed","Night CA"]],
+["Polish","",["AM Quant 10 timed","AM Legal + Logical 25 Qs timed","Night CA rapid revision of all notes"]],
+["FINAL MOCK 5","mock",["AM: light revision","6:45–8:45 pm: final mock, your best section order","No heavy analysis tonight"]],
+["Light day","",["AM: error log + formulas","PM: light analysis of Mock 5","No new topics, sleep 10 pm"]],
+["Prep day","",["Take leave from college if possible","Admit card, ID, pens, centre route check","2–3 hrs light revision","Sleep by 9:30 pm"]],
+["EXAM DAY 🏆","mock",["Light breakfast, reach centre early","Underline direction words","Quant first, stay calm, trust your training"]]];
+function rr(a){return a.map(function(r){return'<div class="tr"><b>'+r[0]+'</b><span>'+r[1]+'</span></div>'}).join("")}
+function li(x){return"<li>"+x+"</li>"}
+function mis(){var p=PL[dayN];G("mt0").textContent="Day "+(dayN+1)+": "+p[0];G("mt").innerHTML=p[2].map(li).join("")}
+function pdt(i,v){var d=R("pd",{});d[i]=v;S("pd",d);document.getElementById("dc"+i).classList.toggle("dn",v)}
+function rend(){var W=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],d=R("pd",{});
+G("p-time").innerHTML='<section class="sec"><h2>Daily timetable</h2><p>College 9–6 (Mon–Sat) ki fit ayye routine.</p></section><div class="g"><div class="card"><h3>Mon–Sat (college days)</h3>'+rr(WK)+'</div><div class="card"><h3>Sunday (full day)</h3>'+rr(SN)+'</div></div><div class="card" style="margin-top:12px">Class time lo study cheyyaku. Break/commute lo 15 min CA flashcards chalu. Quant/Legal morning lo, endukante evening lo tired untav.</div>';
+G("p-plan").innerHTML='<section class="sec"><h2>20-day plan</h2><p>Prathi roju complete ayyaka tick chey.</p></section>'+PL.map(function(p,i){var dt=new Date(START.getTime()+i*864e5);return'<div class="card dc '+p[1]+(i==dayN?" today":"")+(d[i]?" dn":"")+'" id="dc'+i+'"><label><input type="checkbox" '+(d[i]?"checked":"")+' onchange="pdt('+i+',this.checked)"><div><div class="dd">Day '+(i+1)+" · "+W[dt.getDay()]+" "+dt.getDate()+" "+["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][dt.getMonth()]+(i==dayN?" · TODAY":"")+'</div><div class="tt">'+p[0]+'</div><ul>'+p[2].map(li).join("")+"</ul></div></label></div>"}).join("")}
+function sp(n){document.querySelectorAll(".pg").forEach(function(e){e.classList.toggle("on",e.id=="p-"+n)});document.querySelectorAll(".tabs button").forEach(function(b){b.classList.toggle("on",b.dataset.p==n)});history.replaceState(null,"","#"+n);window.scrollTo(0,0)}
 </script></body></html>
